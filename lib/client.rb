@@ -13,7 +13,11 @@ module Noaa
     private
 
     def fetch_alerts_for(location)
-      catalog = HTTParty.get("http://alerts.weather.gov/cap/#{location}.php?x=0", format: :xml)
+      if location.size == 2
+        catalog = HTTParty.get("http://alerts.weather.gov/cap/#{location}.php?x=0", :format => :xml)
+      elsif location.size == 6
+        catalog = HTTParty.get("http://alerts.weather.gov/cap/wwaatmget.php?x=#{location}&y=1", :format => :xml)
+      end
       handle_catalog(catalog)
     end
 
@@ -21,7 +25,7 @@ module Noaa
       entries = catalog['feed']['entry']
       entries = [entries] unless entries.kind_of?(Array)
       entries.each do |entry| 
-        item = HTTParty.get(entry['id'], format: :xml)['alert']
+        item = HTTParty.get(entry['id'], :format => :xml)['alert']
         alert = Noaa::Alert.new(entry['id'], item)
         @alerts << alert unless alert.description.empty?
       end
