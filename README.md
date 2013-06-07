@@ -30,7 +30,7 @@ Instantiate `Noaa::Client` with a two letter US state abbreviation. The result i
 
 ## Requirements
 
-Ruby 1.9
+Ruby 1.8.7 or 1.9
 
 ## Contributing
 
