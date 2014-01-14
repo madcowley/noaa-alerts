@@ -11,7 +11,11 @@ module Noaa
     end
 
     def method_missing(key)
-      @info.fetch(key.to_s)
+      begin
+        @info.fetch(key.to_s)
+      rescue KeyError
+        # to handle to_ary bug: see http://yehudakatz.com/2010/01/02/the-craziest-fing-bug-ive-ever-seen/
+      end
     end
 
     def identifier
