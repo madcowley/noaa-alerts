@@ -2,8 +2,8 @@
 require File.expand_path('../lib/noaa-alerts/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Cameron Cundiff"]
-  gem.email         = ["ckundo@gmail.com"]
+  gem.authors       = ["Cameron Cundiff", "Matt Cowley"]
+  gem.email         = ["ckundo@gmail.com", "madcowley@gmail.com"]
   gem.description   = %q{A Ruby library for consuming NOAA National Weather Service severe weather alerts.}
   gem.summary       = %q{Fetch and format feeds from the NOAA.}
   gem.homepage      = "https://github.com/ckundo/noaa-alerts"
